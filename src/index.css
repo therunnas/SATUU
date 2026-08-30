@@ -341,6 +341,17 @@ tbody tr:last-child td { border-bottom: none; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  /* Sem isto, "Encargos sociais" quebra em duas linhas e incha a linha da
+     tabela — numa tabela financeira densa, altura irregular atrapalha a leitura
+     em coluna. A tabela já rola na horizontal quando falta espaço. */
+  white-space: nowrap;
+}
+
+/* As etiquetas de encargo ficam lado a lado, com respiro entre elas. */
+.fringes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .tag-atl { background: var(--atl-soft); color: var(--atl); }

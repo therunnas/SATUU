@@ -43,7 +43,7 @@ export function BudgetTable({ budget, section }: { budget: Budget; section: Sect
               <th className="right" style={{ width: 64 }}>Qtd</th>
               <th className="right" style={{ width: 92 }}>Unidades</th>
               <th className="right" style={{ width: 120 }}>Valor unit.</th>
-              <th style={{ width: 150 }}>Encargos</th>
+              <th style={{ width: 210 }}>Encargos</th>
               <th className="right" style={{ width: 140 }}>Total</th>
             </tr>
           </thead>
@@ -97,11 +97,13 @@ export function BudgetTable({ budget, section }: { budget: Budget; section: Sect
                             {line.fringeIds.length === 0 ? (
                               <span className="line-meta">—</span>
                             ) : (
-                              line.fringeIds.map((id) => (
-                                <span key={id} className="tag tag-fringe" style={{ marginRight: 4 }}>
-                                  {nomeFringe(id)}
-                                </span>
-                              ))
+                              <div className="fringes">
+                                {line.fringeIds.map((id) => (
+                                  <span key={id} className="tag tag-fringe">
+                                    {nomeFringe(id)}
+                                  </span>
+                                ))}
+                              </div>
                             )}
                           </td>
                           <td className="right num">{money(t.total)}</td>
