@@ -1,46 +1,35 @@
-import { budgetTotals } from './domain/calc'
-import { budgetSeed } from './domain/seed'
-import { money } from './lib/format'
-import { BudgetTable } from './components/BudgetTable'
-import { Summary } from './components/Summary'
-import { Topsheet } from './components/Topsheet'
+import { Route, Routes } from 'react-router-dom'
+import { AppShell } from './components/shell/AppShell'
+import Dashboard from './pages/Dashboard'
+import Projetos from './pages/Projetos'
+import ProjetoDetalhe from './pages/ProjetoDetalhe'
+import Orcamento from './pages/Orcamento'
+import Custos from './pages/Custos'
+import Despesas from './pages/Despesas'
+import Clientes from './pages/Clientes'
+import ClienteDetalhe from './pages/ClienteDetalhe'
+import Produtora from './pages/Produtora'
+import Perfil from './pages/Perfil'
+import Configuracoes from './pages/Configuracoes'
+import NaoEncontradoPagina from './pages/NaoEncontrado'
 
 export default function App() {
-  const budget = budgetSeed
-  const geral = budgetTotals(budget)
-
   return (
-    <div className="app">
-      <header className="head">
-        <div>
-          <div className="brand">
-            <span className="brand-mark">S</span>
-            <span className="brand-name">Satuu · Orçamento de Produção</span>
-          </div>
-          <h1>{budget.project}</h1>
-          <p className="version">{budget.version}</p>
-        </div>
-        <div className="grand">
-          <div className="grand-label">Total do orçamento</div>
-          <div className="grand-value num">{money(geral.total)}</div>
-        </div>
-      </header>
-
-      <Summary budget={budget} />
-      <Topsheet budget={budget} />
-
-      {budget.sections.map((section) => (
-        <BudgetTable key={section.kind} budget={budget} section={section} />
-      ))}
-
-      <p className="foot">
-        Primeira fatia do SATUU: o núcleo de orçamentação. Todo número desta tela sai
-        de <code>src/domain/calc.ts</code> — nenhum componente calcula por conta própria, que é o
-        que impede o resumo, o topsheet e a tabela detalhada de divergirem.
-        <br />
-        Ainda fora do escopo: despesas realizadas, ordens de compra, relatórios de custo e
-        exportação em PDF. Cada um entra por sua própria Issue.
-      </p>
-    </div>
+    <Routes>
+      <Route element={<AppShell />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/projetos" element={<Projetos />} />
+        <Route path="/projetos/:id" element={<ProjetoDetalhe />} />
+        <Route path="/projetos/:id/orcamento" element={<Orcamento />} />
+        <Route path="/custos" element={<Custos />} />
+        <Route path="/despesas" element={<Despesas />} />
+        <Route path="/clientes" element={<Clientes />} />
+        <Route path="/clientes/:id" element={<ClienteDetalhe />} />
+        <Route path="/produtora" element={<Produtora />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/configuracoes" element={<Configuracoes />} />
+        <Route path="*" element={<NaoEncontradoPagina />} />
+      </Route>
+    </Routes>
   )
 }
