@@ -1,0 +1,64 @@
+# --- Sistema operacional ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editores e IDEs ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Segredos e ambiente ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# --- Logs e temporários ---
+*.log
+logs/
+tmp/
+temp/
+*.pid
+
+# --- Node / JavaScript / TypeScript ---
+node_modules/
+dist/
+dist-ssr/
+build/
+.next/
+out/
+coverage/
+.turbo/
+.cache/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# --- Artefatos de build genéricos ---
+target/
+bin/
+obj/
+*.class
+*.o
+*.so
